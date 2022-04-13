@@ -9,16 +9,28 @@
     <!--Video.JS-->
     <link href="https://vjs.zencdn.net/7.18.1/video-js.css" rel="stylesheet" />
     <script src="https://vjs.zencdn.net/7.18.1/video.min.js"></script>
+
+    <!-- Skins  -->
+    <link href="https://unpkg.com/@videojs/themes@1/dist/fantasy/index.css" rel="stylesheet"> <!-- Fantasy -->
+    <link href="https://unpkg.com/@videojs/themes@1/dist/city/index.css" rel="stylesheet"> <!-- City -->
+    <link href="https://unpkg.com/@videojs/themes@1/dist/forest/index.css" rel="stylesheet"> <!-- Forest -->
+    <link href="https://unpkg.com/@videojs/themes@1/dist/sea/index.css" rel="stylesheet"> <!-- Sea -->
+
+    <!-- Watermark -->
+    <link rel="stylesheet" href="./node_modules/videojs-dynamic-watermark/dist/videojs-dynamic-watermark.min.js">
+
+
   
     <style>
       .player{
-        width: 400px;
+        width: 800px;
         height: 480px;
       }
       
       #my-video{
         width: 100%;
         height: 100%;
+        
       }
   
     </style>
@@ -29,7 +41,7 @@
     <div class="player">
       <video 
         id="my-video" 
-        class="video-js vjs-default-skin" 
+        class="video-js vjs-theme-forest" 
         controls 
         loop 
         preload="auto"
@@ -37,8 +49,8 @@
         data-setup="{}">
   
         <source
-          src="https://ak.picdn.net/shutterstock/videos/1038882452/preview/stock-footage-a-thunderstorm-raging-in-the-distance-off-the-coast-of-mooloolaba-sunshine-coast-australia.webm"
-          type="video/webm" />
+          src="https://cdn-gentv.ciclano.io:1443/gentv/gentv/playlist.m3u8"
+          type="application/x-mpegURL" />
   
         <p class="vjs-no-js">
           Para ver este player habilite o Javascript ou considere atualizar o seu navegador.
@@ -47,6 +59,20 @@
       </video>
   
     </div>
+
+    <!-- HLS-->
+    <script href="https://unpkg.com/browse/@videojs/http-streaming@2.14.1/dist/videojs-http-streaming-sync-workers.js"></script>
+
+
+    <script>
+        var player = videojs('my-video')
+        
+        player.dynamicWatermark({
+            elementId: "my-video",
+            watermarkText: "<img height='50' width='50' src='https://gentvplay.com.br/assets/logotop-4da130af3f80b87f51c0d491a90732a41b7ae00e33490fba7191842edf3ff868.png' />",
+            changeDuration: 1000,
+            cssText: "display: inline-block; color: grey; background-color: transparent; font-size: 1rem; z-index: 9999; position: absolute; @media only screen and (max-width: 992px){font-size: 0.8rem;}"});
+    </script>
   
     <!-- https://gentvplay.com.br/assets/logotop-4da130af3f80b87f51c0d491a90732a41b7ae00e33490fba7191842edf3ff868.png /////  LOGO Watermark -->
   

@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "videojs-dynamic-watermark": "^1.0.1"
+  }
+}
